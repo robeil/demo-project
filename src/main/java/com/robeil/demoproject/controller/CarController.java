@@ -3,12 +3,15 @@ package com.robeil.demoproject.controller;
 import com.robeil.demoproject.domain.Car;
 import com.robeil.demoproject.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+@EnableMethodSecurity
 @RestController
 @RequestMapping("/cars")
 public class CarController {
@@ -25,9 +28,7 @@ public class CarController {
         return service.save(car);
     }
     @GetMapping("/all")
-    public List<Car> findAll(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size){
+    public List<Car> findAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size){
         return service.finaAll(page,size);
     }
     @GetMapping("/{id}")
@@ -37,5 +38,10 @@ public class CarController {
     @GetMapping("/brand/{brand}")
     public Optional<Car> findByName(@PathVariable String brand){
         return service.findByBrandName(brand);
+    }
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/delete")
+    public void deleteOwner(Car car){
+        service.deleteOwner(car);
     }
 }

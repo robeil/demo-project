@@ -69,4 +69,14 @@ public class CarServiceEmpl implements CarService {
     public Optional<Car> findByBrandName(String brand) {
         return repository.findByBrand(brand);
     }
+
+    @Override
+    public void deleteOwner(Car car) {
+        var carExists = repository.findById(car.getId());
+        if(carExists.isPresent()){
+            carExists.get().setOwner(null);
+        }else{
+            logger.info("There is no Owner found that own the given car details : " + car);
+        }
+    }
 }

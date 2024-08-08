@@ -6,8 +6,12 @@ import com.robeil.demoproject.service.OwnerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,4 +30,11 @@ public class OwnerServiceImpl implements OwnerService {
         }
         return owner;
     }
+
+    @Override
+    public List<Owner> getAllOwners() {
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
+        return repository.findAllByOrderByFirstName(firstPageWithTwoElements);
+    }
+
 }

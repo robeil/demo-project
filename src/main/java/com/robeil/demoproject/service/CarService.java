@@ -13,4 +13,5 @@ public interface CarService {
     Car save(Car car);
     List<Car> safeAll(List<Car> listCars);
     Optional<Car> findByBrandName(String brand);
+    void deleteOwner(Car car);
 }

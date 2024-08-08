@@ -20,4 +20,15 @@ public class Car {
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
     private Owner owner;
+
+    public Car(String brand, String model, String color, String registerNumber, int modelYear, int price, String description, Owner owner) {
+        this.brand = brand;
+        this.model = model;
+        this.color = color;
+        this.registerNumber = registerNumber;
+        this.modelYear = modelYear;
+        this.price = price;
+        this.description = description;
+        this.owner = owner;
+    }
 }
