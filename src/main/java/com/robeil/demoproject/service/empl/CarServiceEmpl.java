@@ -6,6 +6,7 @@ import com.robeil.demoproject.service.CarService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -28,7 +29,7 @@ public class CarServiceEmpl implements CarService {
         logger.info("Count of Car in DB :  {}, " + repository.count() );
         return repository.count();
     }
-
+    @Cacheable("cars")
     @Override
     public List<Car> finaAll(int page, int size) {
         logger.info("FindAll:  {}" );
@@ -65,6 +66,7 @@ public class CarServiceEmpl implements CarService {
         return repository.saveAll(listCars);
     }
 
+    @Cacheable("cars")
     @Override
     public Optional<Car> findByBrandName(String brand) {
         return repository.findByBrand(brand);

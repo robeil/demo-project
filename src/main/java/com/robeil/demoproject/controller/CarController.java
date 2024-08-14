@@ -1,15 +1,17 @@
 package com.robeil.demoproject.controller;
 
 import com.robeil.demoproject.domain.Car;
+import com.robeil.demoproject.exception.MyCustomException;
 import com.robeil.demoproject.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 @EnableMethodSecurity
 @RestController
@@ -19,6 +21,10 @@ public class CarController {
     @Autowired
     private CarService service;
 
+    @ExceptionHandler(MyCustomException.class)
+    public ResponseEntity<String> handleCustomException(MyCustomException exception){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
     @PostMapping()
     public List<Car> safAll(@RequestBody List<Car> listCars){
         return service.safeAll(listCars);

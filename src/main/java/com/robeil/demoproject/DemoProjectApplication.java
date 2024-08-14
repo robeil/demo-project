@@ -16,20 +16,17 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class DemoProjectApplication implements CommandLineRunner {
-    private static final Logger logger = LoggerFactory.getLogger(DemoProjectApplication.class);
-    private final CarRepository repository;
-    private final OwnerRepository orepository;
-    private final AppUserRepository urepository;
-
-
-public DemoProjectApplication(
-        CarRepository repository,
-        OwnerRepository orepository,
-        AppUserRepository urepository) {
-    this.repository = repository;
-    this.orepository = orepository;
-    this.urepository = urepository;
-}
+      private static final Logger logger = LoggerFactory.getLogger(DemoProjectApplication.class);
+//    private final CarRepository repository;
+//    private final OwnerRepository orepository;
+//    private final AppUserRepository urepository;
+//
+//
+//public DemoProjectApplication(CarRepository repository, OwnerRepository orepository, AppUserRepository urepository) {
+//    this.repository = repository;
+//    this.orepository = orepository;
+//    this.urepository = urepository;
+//}
     public static void main(String[] args) {
         SpringApplication.run(DemoProjectApplication.class, args);
         logger.info("After adding this comment the application is restarted");
