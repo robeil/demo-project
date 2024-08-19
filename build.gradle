@@ -40,6 +40,9 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5', 'io.jsonwebtoken:jjwt-jackson:0.11.5'
     testRuntimeOnly 'com.h2database:h2'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.3.2'
+
 }
 
 tasks.named('test') {
