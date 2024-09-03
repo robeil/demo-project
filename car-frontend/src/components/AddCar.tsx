@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Car } from "./types";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addCar } from "../api/carapi";
+import { useMutation } from "@tanstack/react-query";
+
 
 function AddCar() {
-  const queryClient = useQueryClient();
+  //const queryClient = useQueryClient();
 
   const { mutate } = useMutation({ //supposed to pass the addCar function as a parameter
     onSuccess: () => {

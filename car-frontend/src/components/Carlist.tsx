@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CarResponse } from "./types";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getCars, deleteCar } from "../api/CarApi";
+import { getCars } from "../api/CarApi";
 import { DataGrid, GridColDef, GridCellParams } from "@mui/x-data-grid";
 import Snackbar from "@mui/material/Snackbar";
 import AddCar from './AddCar';
